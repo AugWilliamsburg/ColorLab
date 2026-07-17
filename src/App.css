@@ -1,0 +1,263 @@
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.app__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.app__header h1 {
+  font-size: 40px;
+  letter-spacing: -0.5px;
+}
+
+.app__logo {
+  margin-right: 8px;
+}
+
+.app__main {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.app__footer {
+  text-align: center;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* Panel */
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.panel__title {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.panel__subtitle {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.controls__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+.controls__field select,
+.controls__field input[type="text"] {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  min-width: 140px;
+}
+
+.controls__color-input {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.controls__color-input input[type="color"] {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  transition: background 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+}
+
+.btn--secondary {
+  background: #eef2ff;
+  color: var(--accent-hover);
+}
+
+.btn--secondary:hover {
+  background: #e0e7ff;
+}
+
+.error-text {
+  color: #dc2626;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+/* Palette grid */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+/* Swatch */
+.swatch {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.swatch__color {
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.swatch__meta {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  gap: 4px;
+  background: #fafafa;
+}
+
+.swatch__code {
+  background: none;
+  border: none;
+  padding: 2px 0;
+  font-size: 12px;
+  text-align: left;
+  font-family: ui-monospace, Consolas, monospace;
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.swatch__code--secondary {
+  color: var(--text);
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.swatch__code:hover {
+  color: var(--accent);
+}
+
+/* Contrast checker */
+.contrast-preview {
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+.contrast-preview__large {
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.contrast-preview__text {
+  font-size: 14px;
+  margin: 0;
+}
+
+.contrast-results {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.contrast-results__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.badge--pass {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.badge--ok {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.badge--fail {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Image extractor */
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 16px;
+  transition: border-color 0.15s ease;
+}
+
+.dropzone:hover {
+  border-color: var(--accent);
+}
+
+.dropzone__preview {
+  max-width: 100%;
+  max-height: 240px;
+  border-radius: 8px;
+}
+
+.hidden-input {
+  display: none;
+}
