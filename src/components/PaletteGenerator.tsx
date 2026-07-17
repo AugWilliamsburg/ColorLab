@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useCallback, useState } from "react";
 import ColorSwatch from "./ColorSwatch";
 import {
   generateHarmony,
@@ -16,22 +16,27 @@ const HARMONY_OPTIONS: { value: HarmonyType; label: string }[] = [
   { value: "monochromatic", label: "Monochromatic" },
 ];
 
-export default function PaletteGenerator() {
-  const [baseHex, setBaseHex] = useState("#3b82f6");
+interface PaletteGeneratorProps {
+  palette: string[];
+  onPaletteChange: (palette: string[]) => void;
+}
+
+export default function PaletteGenerator({ palette, onPaletteChange }: PaletteGeneratorProps) {
+  const [baseHex, setBaseHex] = useState(palette[0] ?? "#3b82f6");
   const [harmony, setHarmony] = useState<HarmonyType>("analogous");
-  const [palette, setPalette] = useState<string[]>(() =>
-    generateHarmony("#3b82f6", "analogous"),
-  );
   const [error, setError] = useState<string | null>(null);
 
-  const applyHarmony = useCallback((hex: string, type: HarmonyType) => {
-    if (!isValidHex(hex)) {
-      setError("Please enter a valid hex color, e.g. #3b82f6");
-      return;
-    }
-    setError(null);
-    setPalette(generateHarmony(hex, type));
-  }, []);
+  const applyHarmony = useCallback(
+    (hex: string, type: HarmonyType) => {
+      if (!isValidHex(hex)) {
+        setError("Please enter a valid hex color, e.g. #3b82f6");
+        return;
+      }
+      setError(null);
+      onPaletteChange(generateHarmony(hex, type));
+    },
+    [onPaletteChange],
+  );
 
   const handleBaseChange = (value: string) => {
     setBaseHex(value);
@@ -47,7 +52,7 @@ export default function PaletteGenerator() {
 
   const handleRandom = () => {
     const random = generateRandomPalette(5);
-    setPalette(random);
+    onPaletteChange(random);
     setBaseHex(random[0]);
     setError(null);
   };

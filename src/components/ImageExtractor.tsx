@@ -2,7 +2,11 @@ import { useRef, useState } from "react";
 import ColorSwatch from "./ColorSwatch";
 import { extractPaletteFromImage } from "../utils/extractPalette";
 
-export default function ImageExtractor() {
+interface ImageExtractorProps {
+  onUsePalette?: (palette: string[]) => void;
+}
+
+export default function ImageExtractor({ onUsePalette }: ImageExtractorProps) {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [palette, setPalette] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
@@ -70,11 +74,18 @@ export default function ImageExtractor() {
       {error && <p className="error-text">{error}</p>}
 
       {palette.length > 0 && !loading && (
-        <div className="palette-grid">
-          {palette.map((hex, i) => (
-            <ColorSwatch key={`${hex}-${i}`} hex={hex} size="sm" />
-          ))}
-        </div>
+        <>
+          <div className="palette-grid">
+            {palette.map((hex, i) => (
+              <ColorSwatch key={`${hex}-${i}`} hex={hex} size="sm" />
+            ))}
+          </div>
+          {onUsePalette && (
+            <button className="btn btn--secondary use-palette-btn" onClick={() => onUsePalette(palette)}>
+              ↑ Use this palette above
+            </button>
+          )}
+        </>
       )}
     </section>
   );
